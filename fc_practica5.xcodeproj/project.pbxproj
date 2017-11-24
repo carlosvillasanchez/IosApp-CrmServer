@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		681DD7611FC6CA4F00712835 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DD7601FC6CA4F00712835 /* AppDelegate.swift */; };
-		681DD7631FC6CA4F00712835 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DD7621FC6CA4F00712835 /* ViewController.swift */; };
 		681DD7661FC6CA4F00712835 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 681DD7641FC6CA4F00712835 /* Main.storyboard */; };
 		681DD7681FC6CA4F00712835 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 681DD7671FC6CA4F00712835 /* Assets.xcassets */; };
 		681DD76B1FC6CA4F00712835 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 681DD7691FC6CA4F00712835 /* LaunchScreen.storyboard */; };
 		681DD7761FC6CA4F00712835 /* fc_practica5Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DD7751FC6CA4F00712835 /* fc_practica5Tests.swift */; };
 		681DD7811FC6CA4F00712835 /* fc_practica5UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DD7801FC6CA4F00712835 /* fc_practica5UITests.swift */; };
+		681DD78F1FC6CB2100712835 /* VisitsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DD78E1FC6CB2100712835 /* VisitsTableViewController.swift */; };
+		681DD7911FC6E19A00712835 /* VisitaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DD7901FC6E19A00712835 /* VisitaViewController.swift */; };
+		681DD7931FC7422600712835 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DD7921FC7422600712835 /* ViewController.swift */; };
+		689FEF1A1FC891E700F106E0 /* DatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689FEF191FC891E700F106E0 /* DatesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		681DD75D1FC6CA4F00712835 /* fc_practica5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fc_practica5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		681DD7601FC6CA4F00712835 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		681DD7621FC6CA4F00712835 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		681DD7651FC6CA4F00712835 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		681DD7671FC6CA4F00712835 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		681DD76A1FC6CA4F00712835 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		681DD77C1FC6CA4F00712835 /* fc_practica5UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fc_practica5UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		681DD7801FC6CA4F00712835 /* fc_practica5UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fc_practica5UITests.swift; sourceTree = "<group>"; };
 		681DD7821FC6CA4F00712835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		681DD78E1FC6CB2100712835 /* VisitsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsTableViewController.swift; sourceTree = "<group>"; };
+		681DD7901FC6E19A00712835 /* VisitaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitaViewController.swift; sourceTree = "<group>"; };
+		681DD7921FC7422600712835 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		689FEF191FC891E700F106E0 /* DatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +104,14 @@
 			isa = PBXGroup;
 			children = (
 				681DD7601FC6CA4F00712835 /* AppDelegate.swift */,
-				681DD7621FC6CA4F00712835 /* ViewController.swift */,
 				681DD7641FC6CA4F00712835 /* Main.storyboard */,
 				681DD7671FC6CA4F00712835 /* Assets.xcassets */,
 				681DD7691FC6CA4F00712835 /* LaunchScreen.storyboard */,
 				681DD76C1FC6CA4F00712835 /* Info.plist */,
+				681DD78E1FC6CB2100712835 /* VisitsTableViewController.swift */,
+				681DD7901FC6E19A00712835 /* VisitaViewController.swift */,
+				681DD7921FC7422600712835 /* ViewController.swift */,
+				689FEF191FC891E700F106E0 /* DatesViewController.swift */,
 			);
 			path = fc_practica5;
 			sourceTree = "<group>";
@@ -259,8 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				681DD7631FC6CA4F00712835 /* ViewController.swift in Sources */,
 				681DD7611FC6CA4F00712835 /* AppDelegate.swift in Sources */,
+				681DD78F1FC6CB2100712835 /* VisitsTableViewController.swift in Sources */,
+				681DD7931FC7422600712835 /* ViewController.swift in Sources */,
+				689FEF1A1FC891E700F106E0 /* DatesViewController.swift in Sources */,
+				681DD7911FC6E19A00712835 /* VisitaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
