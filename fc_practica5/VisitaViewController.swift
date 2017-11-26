@@ -12,10 +12,15 @@ class VisitaViewController: UIViewController {
 
     @IBOutlet weak var imagen: UIImageView!
     var info: Visit?
+    var idSalesmen = ""
+    var idCostumer = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let salesman = info!["Salesman"] as? [String:Any], let id = salesman["id"]{
+            idSalesmen = String(describing: id)
+            print(id)
+        }
        // imagen = UIImage(named: "no face")
         putPhoto()
         // Do any additional setup after loading the view.
@@ -30,7 +35,7 @@ class VisitaViewController: UIViewController {
         if let salesman = info!["Salesman"] as? [String:Any], let photo = salesman["Photo"] as? [String:Any], let strurl = photo["url"] as? String {
             
             if let img = imgCache[strurl] {
-                imagen = UIImageView(image: img)
+                imagen.image = img
             }else{
                 updatePhoto(strurl)
             }
@@ -38,16 +43,19 @@ class VisitaViewController: UIViewController {
            // imagen.reloadInputViews()
         }
     }
+  
+
     
     func updatePhoto(_ strurl: String){
         //Cola global
         DispatchQueue.global().async {
             if let url = URL(string: strurl), let data = try? Data(contentsOf: url), let img = UIImage(data: data){
-                
+                self.imagen.image = img
+
                 //propiedades o interfaz de usuario, para acceder a las propiedades -> self
                 DispatchQueue.main.async {
                     imgCache[strurl] = img
-                    self.imagen = UIImageView(image: img)
+                    
                 }
         
             }

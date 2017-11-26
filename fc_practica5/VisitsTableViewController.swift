@@ -32,6 +32,7 @@ class VisitsTableViewController: UITableViewController {
             strUrl = "https://dcrmt.herokuapp.com/api/" + extensionUrl! + "?token=\(token)" + argumentosAdicionales!
         }
         if let url = URL(string: strUrl){
+            print(strUrl)
             let t = sesion.dataTask(with: url){ (data, response, error) in
                 if error != nil {
                     print("Error1", error!.localizedDescription)
@@ -173,7 +174,13 @@ class VisitsTableViewController: UITableViewController {
     }
     
     @IBAction func exit(_ segue: UIStoryboardSegue){
-        
+        guard let visita = segue.source as? VisitaViewController else{
+            return
+        }
+        extensionUrl = "salesmen/\(visita.idSalesmen)/visits/flattened"
+        downloadVisits()
+        tableView.reloadData()
+
     }
 
   /*
