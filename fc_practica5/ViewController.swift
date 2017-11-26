@@ -23,25 +23,25 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "Visitas Totales"{
-            if let visitasDestination = segue.destination as? VisitsTableViewController{
+        if segue.identifier == "all"{
+            if let visitasDestination = segue.destination as? DatesViewController{
                     visitasDestination.extensionUrl = "visits/flattened"
-                    visitasDestination.navegationBar.title = "Todas las visitas"
+                    visitasDestination.titulo = "Todas las visitas"
             }
-        }else if segue.identifier == "Mis Visitas"{
-            if let visitasDestination = segue.destination as? VisitsTableViewController{
+        }else if segue.identifier == "mine"{
+            if let visitasDestination = segue.destination as? DatesViewController{
                 visitasDestination.extensionUrl = "users/tokenOwner/visits/flattened"
-                visitasDestination.navegationBar.title = "Mis visitas"
+                visitasDestination.titulo = "Mis visitas"
+            }
+        }else if segue.identifier == "fav"{
+            if let visitasDestination = segue.destination as? DatesViewController{
+                visitasDestination.extensionUrl = ""
+                visitasDestination.titulo = "Favoritas"
             }
         }
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "Visitas Totales"{
-           
-        }else if identifier == "Mis Visitas"{
-            
-        }
         return true
     }
     

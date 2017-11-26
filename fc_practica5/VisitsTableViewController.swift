@@ -178,6 +178,7 @@ class VisitsTableViewController: UITableViewController {
             return
         }
         extensionUrl = "salesmen/\(visita.idSalesmen)/visits/flattened"
+        argumentosAdicionales = nil
         downloadVisits()
         tableView.reloadData()
 

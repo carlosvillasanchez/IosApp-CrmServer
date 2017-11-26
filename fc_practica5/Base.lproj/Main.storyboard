@@ -90,15 +90,22 @@
                                     <segue destination="YSv-Cj-0ZP" kind="show" identifier="Visitas Fechas" id="OsE-n3-KOV"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pk9-PT-RCo">
+                                <rect key="frame" x="163" y="128" width="49" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.73562161410000004" green="0.95796942780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DfP-To-2QI" firstAttribute="trailing" secondItem="nox-WG-eKN" secondAttribute="trailing" id="1vH-bj-rQ6"/>
+                            <constraint firstItem="pk9-PT-RCo" firstAttribute="top" secondItem="kcY-VA-RLP" secondAttribute="bottom" constant="8" id="75j-NU-Gga"/>
                             <constraint firstItem="kcY-VA-RLP" firstAttribute="top" secondItem="nox-WG-eKN" secondAttribute="top" constant="26" id="Cmc-TC-itS"/>
+                            <constraint firstItem="pk9-PT-RCo" firstAttribute="leading" secondItem="nox-WG-eKN" secondAttribute="leading" constant="163" id="Dvr-FZ-lhd"/>
                             <constraint firstItem="Ab7-L8-czl" firstAttribute="trailing" secondItem="nox-WG-eKN" secondAttribute="trailing" id="KZf-Fh-vXd"/>
                             <constraint firstItem="Ab7-L8-czl" firstAttribute="top" secondItem="DfP-To-2QI" secondAttribute="bottom" constant="8" id="Oxo-MI-VJ6"/>
                             <constraint firstItem="Ab7-L8-czl" firstAttribute="leading" secondItem="nox-WG-eKN" secondAttribute="leading" id="QV2-fb-8cd"/>
                             <constraint firstItem="DfP-To-2QI" firstAttribute="top" secondItem="kcY-VA-RLP" secondAttribute="bottom" constant="18" id="aX9-Eq-FPz"/>
+                            <constraint firstItem="nox-WG-eKN" firstAttribute="trailing" secondItem="pk9-PT-RCo" secondAttribute="trailing" constant="165" id="amo-va-Qi3"/>
+                            <constraint firstItem="Ab7-L8-czl" firstAttribute="top" secondItem="pk9-PT-RCo" secondAttribute="bottom" constant="203" id="g3G-na-fxV"/>
                             <constraint firstItem="DfP-To-2QI" firstAttribute="top" secondItem="nox-WG-eKN" secondAttribute="top" constant="74" id="kmp-Gf-GDl"/>
                             <constraint firstItem="DfP-To-2QI" firstAttribute="leading" secondItem="nox-WG-eKN" secondAttribute="leading" id="ozD-fk-yXe"/>
                             <constraint firstItem="kcY-VA-RLP" firstAttribute="centerX" secondItem="yRj-OM-PJH" secondAttribute="centerX" id="pg2-lg-PcE"/>
@@ -109,6 +116,7 @@
                     <connections>
                         <outlet property="datePicker1" destination="DfP-To-2QI" id="9CV-jO-33a"/>
                         <outlet property="datePicker2" destination="Ab7-L8-czl" id="nub-Nd-Ww6"/>
+                        <outlet property="s" destination="pk9-PT-RCo" id="Ndm-Sd-ZPy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="18O-uh-gXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -173,7 +181,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Visitas Totales"/>
                                 <connections>
-                                    <segue destination="YSv-Cj-0ZP" kind="show" identifier="Visitas Totales" id="itG-rL-b3C"/>
+                                    <segue destination="8cu-qC-F9h" kind="show" identifier="all" id="Vtn-Wj-tN4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rb0-ZT-UfH">
@@ -181,15 +189,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="MIO"/>
                                 <connections>
-                                    <segue destination="YSv-Cj-0ZP" kind="show" identifier="Mis Visitas" id="mPX-P8-svJ"/>
+                                    <segue destination="8cu-qC-F9h" kind="show" identifier="mine" id="6jz-ca-GqL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYS-JE-DiW">
                                 <rect key="frame" x="172" y="486" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="date"/>
+                                <state key="normal" title="fav"/>
                                 <connections>
-                                    <segue destination="8cu-qC-F9h" kind="show" identifier="To Date Picker" id="v5U-1X-49A"/>
+                                    <segue destination="8cu-qC-F9h" kind="show" identifier="fav" id="CAS-tT-2yq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -220,6 +228,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OsE-n3-KOV"/>
+        <segue reference="6jz-ca-GqL"/>
     </inferredMetricsTieBreakers>
 </document>
