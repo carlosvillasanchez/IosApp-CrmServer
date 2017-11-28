@@ -10,6 +10,28 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var ayuda: UIButton!
+    @IBOutlet weak var texto1: UILabel!
+    @IBOutlet weak var texto2: UILabel!
+    @IBOutlet weak var texto3: UILabel!
+    var oculto = true
+    @IBAction func ayuda(_ sender: UIButton) {
+        if oculto{
+             ayuda.setTitle("Ocultar", for: .normal)
+            texto1.isHidden = false
+            texto2.isHidden = false
+            texto3.isHidden = false
+            oculto = false
+        }else{
+            ayuda.setTitle("Ayuda", for: .normal)
+            texto1.isHidden = true
+            texto2.isHidden = true
+            texto3.isHidden = true
+            oculto = true
+        }
+       
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,22 +49,31 @@ class ViewController: UIViewController {
             if let visitasDestination = segue.destination as? DatesViewController{
                     visitasDestination.extensionUrl = "visits/flattened"
                     visitasDestination.titulo = "Todas las visitas"
+                    visitasDestination.tipoDeTabla = "normal"
             }
         }else if segue.identifier == "mine"{
             if let visitasDestination = segue.destination as? DatesViewController{
                 visitasDestination.extensionUrl = "users/tokenOwner/visits/flattened"
                 visitasDestination.titulo = "Mis visitas"
+                visitasDestination.tipoDeTabla = "normal"
+
             }
         }else if segue.identifier == "fav"{
             if let visitasDestination = segue.destination as? DatesViewController{
-                visitasDestination.extensionUrl = ""
+                visitasDestination.extensionUrl = "visits/flattened"
+                visitasDestination.fav = true
                 visitasDestination.titulo = "Favoritas"
+                visitasDestination.tipoDeTabla = "normal"
             }
         }
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         return true
+    }
+    
+    @IBAction func exit(_ segue: UIStoryboardSegue){
+        
     }
     
     

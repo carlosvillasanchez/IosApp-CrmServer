@@ -17,6 +17,7 @@
 		681DD7911FC6E19A00712835 /* VisitaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DD7901FC6E19A00712835 /* VisitaViewController.swift */; };
 		681DD7931FC7422600712835 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DD7921FC7422600712835 /* ViewController.swift */; };
 		689FEF1A1FC891E700F106E0 /* DatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689FEF191FC891E700F106E0 /* DatesViewController.swift */; };
+		68D9FB781FCDED6300D1E7B3 /* VisitsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9FB771FCDED6300D1E7B3 /* VisitsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		681DD7901FC6E19A00712835 /* VisitaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitaViewController.swift; sourceTree = "<group>"; };
 		681DD7921FC7422600712835 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		689FEF191FC891E700F106E0 /* DatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesViewController.swift; sourceTree = "<group>"; };
+		68D9FB771FCDED6300D1E7B3 /* VisitsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				681DD7901FC6E19A00712835 /* VisitaViewController.swift */,
 				681DD7921FC7422600712835 /* ViewController.swift */,
 				689FEF191FC891E700F106E0 /* DatesViewController.swift */,
+				68D9FB771FCDED6300D1E7B3 /* VisitsTableViewCell.swift */,
 			);
 			path = fc_practica5;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				681DD7931FC7422600712835 /* ViewController.swift in Sources */,
 				689FEF1A1FC891E700F106E0 /* DatesViewController.swift in Sources */,
 				681DD7911FC6E19A00712835 /* VisitaViewController.swift in Sources */,
+				68D9FB781FCDED6300D1E7B3 /* VisitsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

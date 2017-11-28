@@ -10,6 +10,7 @@
 
 import UIKit
 public typealias Visit = [String:Any]
+//public typealias Fans =
 public var imgCache = [String:UIImage]()
 class VisitsTableViewController: UITableViewController {
     
@@ -17,8 +18,8 @@ class VisitsTableViewController: UITableViewController {
     var extensionUrl: String?
     var argumentosAdicionales: String?
     let token = "232a6ff08c235306c577"
-    
-    
+    var tipoDeTabla: String?
+
     var visits = [Visit]() //() para llamar al constructor
     
     var sesion = URLSession.shared
@@ -36,6 +37,9 @@ class VisitsTableViewController: UITableViewController {
             let t = sesion.dataTask(with: url){ (data, response, error) in
                 if error != nil {
                     print("Error1", error!.localizedDescription)
+                    let alertController = UIAlertController(title: "Conexion Imposible", message: "Probablemente no tengas conexion a internet", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alertController, animated: true)
                     return
                 }
 
@@ -95,47 +99,79 @@ class VisitsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Visit Cell", for: indexPath)
-        
-        let visit = visits[indexPath.row]
-        cell.textLabel?.text = "nombre"
-        cell.detailTextLabel?.text = "fecha"
-        cell.imageView?.image = UIImage(named: "no face")
-        
-        
-        if let customer = visit["Customer"] as? [String:Any], let name = customer["name"] as? String {
-            cell.textLabel?.text = name
-        }
-        
-        if let plannedFor = visit["plannedFor"] as? String {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Visit Cell", for: indexPath) as! VisitsTableViewCell
+        if tipoDeTabla! == "normal"{
+            let visit = visits[indexPath.row]
+            cell.text1?.text = "nombre"
+            cell.detailText?.text = "fecha"
+            cell.notas?.text = "no hay notas"
+            cell.typeImage?.image = UIImage(named: "no face")
             
-            //copiar del codigo del foro
             
-            let df = ISO8601DateFormatter()
-            df.formatOptions = [.withFullDate, .withTime, .withDashSeparatorInDate, .withColonSeparatorInTime]
-            if let d = df.date(from: plannedFor){
-                let str3 = ISO8601DateFormatter.string(from: d, timeZone: .current, formatOptions: [.withFullDate])
+            if let customer = visit["Customer"] as? [String:Any], let name = customer["name"] as? String {
+                cell.text1?.text = name
+            }
+            
+            if let plannedFor = visit["plannedFor"] as? String {
                 
-                cell.detailTextLabel?.text = str3
+                //copiar del codigo del foro
+                
+                let df = ISO8601DateFormatter()
+                df.formatOptions = [.withFullDate, .withTime, .withDashSeparatorInDate, .withColonSeparatorInTime]
+                if let d = df.date(from: plannedFor){
+                    let str3 = ISO8601DateFormatter.string(from: d, timeZone: .current, formatOptions: [.withFullDate])
+                    
+                    cell.detailText?.text = str3
+                }
+            
+                if let nota = visit["notes"] as? String{
+                    if nota == "" {
+                        cell.notas?.text = "no hay notas"
+                    }else{
+                        cell.notas?.text = nota
+                    }
+                }
+                
+                
             }
             
             
-            
-        }
-        
-        
-        if let salesman = visit["Salesman"] as? [String:Any], let photo = salesman["Photo"] as? [String:Any], let strurl = photo["url"] as? String {
-            
-            if let img = imgCache[strurl] {
-                cell.imageView?.image = img
+            if let salesman = visit["Salesman"] as? [String:Any], let photo = salesman["Photo"] as? [String:Any], let strurl = photo["url"] as? String {
                 
-            }else{
-                //me la descargo
+                if let img = imgCache[strurl] {
+                    cell.typeImage?.image = img
+                    
+                }else{
+                    //me la descargo
+                    
+                    updatePhoto(strurl,for: indexPath)
+                }
                 
-                updatePhoto(strurl,for: indexPath)
+            }
+        }else if tipoDeTabla! == "fans"{
+            let visit = visits[indexPath.row]
+            cell.text1?.text = "nombre"
+            cell.detailText?.text = "id"
+            cell.typeImage?.image = nil
+            cell.notas?.text = nil
+          //  cell.imageView?.image = UIImage(named: "no face")
+            
+            
+            if let name = visit["fullname"] as? String {
+                cell.text1?.text = name
+            }
+            
+            if let id = visit["id"] as? Int {
+                
+                //copiar del codigo del foro
+                
+                cell.detailText?.text = "id: " + String(id)
+                //cell.detailTextLabel?.textColor = red
+                
             }
             
         }
+
         
         
         
@@ -173,15 +209,43 @@ class VisitsTableViewController: UITableViewController {
         
     }
     
-    @IBAction func exit(_ segue: UIStoryboardSegue){
+    @IBAction func exitSalesman(_ segue: UIStoryboardSegue){
         guard let visita = segue.source as? VisitaViewController else{
             return
         }
+        let name = visita.salesmanName
+        navegationBar.title = name
         extensionUrl = "salesmen/\(visita.idSalesmen)/visits/flattened"
         argumentosAdicionales = nil
+        tipoDeTabla = "normal"
         downloadVisits()
         tableView.reloadData()
 
+    }
+    
+    @IBAction func exitCustomer(_ segue: UIStoryboardSegue){
+        guard let visita = segue.source as? VisitaViewController else{
+            return
+        }
+        let name = visita.customerName
+        navegationBar.title = name
+        extensionUrl = "customers/\(visita.idCustomer)/visits/flattened"
+        argumentosAdicionales = nil
+        tipoDeTabla = "normal"
+        downloadVisits()
+        tableView.reloadData()
+    }
+    
+    @IBAction func exitFans(_ segue: UIStoryboardSegue){
+        guard let visita = segue.source as? VisitaViewController else{
+            return
+        }
+       visits = visita.fans
+        tipoDeTabla = "fans"
+        navegationBar.title = "fans"
+        //  argumentosAdicionales = nil
+        //downloadVisits()
+        tableView.reloadData()
     }
 
   /*
